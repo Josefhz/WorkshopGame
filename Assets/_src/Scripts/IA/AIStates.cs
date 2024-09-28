@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class AIStates : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public AIStateType States;
+
+    public void ChangeToState(AIStateType state)
     {
-        
+        if (States == state) return;
+
+        // ANIMACAO DE TROCA DE ESTADO
+        // COISAS AO TROCAR DE ESTADO
+
+        States = state;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

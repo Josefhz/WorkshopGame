@@ -6,48 +6,54 @@ using UnityEngine.AI;
 public class AICombat : MonoBehaviour
 {
     [Header("Main Data")]
-    [SerializeField] private EnemyScriptable brain;
+    private EnemyScriptable brain;
 
     [Header("Attack Info")]
     [SerializeField] private bool canAttack;
     [SerializeField] private float currentAttackCooldown;
 
-    [Header("Player Info")]
-    [SerializeField] private Transform player;
-
     private NavMeshAgent nav;
 
-    private void Start()
+    public void Init(EnemyScriptable pBrain)
     {
+        brain = pBrain;
+
+        nav = GetComponent<NavMeshAgent>();
         nav.stoppingDistance = brain.AttackRange;
     }
 
-    void CheckAndAttack()
+    public bool CheckAndAttack(Transform target)
     {
-        if (Vector3.Distance(transform.position, player.position) < brain.AttackRange)
+        CooldownRecovery();
+
+        if (Vector3.Distance(transform.position, target.position) < brain.AttackRange)
         {
             if (canAttack)
             {
-                Attack();
+                Attack(target);
             }
-            else
-            {
-                currentAttackCooldown -= Time.deltaTime;
 
-                if (currentAttackCooldown <= 0)
-                {
-                    canAttack = true;
-                    currentAttackCooldown = brain.attackSpeed;
-                }
+            return true;
+        }
 
-            }
+        return false;
+    }
+
+    public void CooldownRecovery()
+    {
+        currentAttackCooldown -= Time.deltaTime;
+
+        if (currentAttackCooldown <= 0)
+        {
+            canAttack = true;
+            currentAttackCooldown = brain.attackSpeed;
         }
     }
 
-    void Attack()
+    public void Attack(Transform target)
     {
         canAttack = false;
 
-        player.GetComponent<IDamageable>().TakeDamage(Random.Range(brain.AttackDamage[0], brain.AttackDamage[1]));
+        target.GetComponent<IDamageable>().TakeDamage(Random.Range(brain.AttackDamage[0], brain.AttackDamage[1]));
     }
 }

@@ -16,4 +16,7 @@ MonoBehaviour:
     Health: 100
     Armor: 10
     MagicResist: 10
+  AttackRange: 10
+  attackSpeed: 2
+  AttackDamage: 0a00000014000000
   GFX: {fileID: 1559399094206029880, guid: 9db05995befeb43188d80e901879b370, type: 3}

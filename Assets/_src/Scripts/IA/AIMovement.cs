@@ -7,24 +7,21 @@ public class AIMovement : MonoBehaviour
 {
     private NavMeshAgent nav;
 
-    [Header("Player Info")]
-    public Transform player;
-
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
     }
 
-    void Update()
+    public bool Chase(Transform target)
     {
-        if (player == null) return;
+        if (!target) return false;
 
-        Chase();
-    }
-    
+        if (Vector3.Distance(transform.position, target.position) > nav.stoppingDistance)
+        {
+            nav.SetDestination(target.position);
+            return true;
+        }
 
-    void Chase()
-    {
-        nav.SetDestination(player.position);
+        return false;       
     }
 }
