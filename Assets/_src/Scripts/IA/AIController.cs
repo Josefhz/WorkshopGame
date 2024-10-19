@@ -83,6 +83,8 @@ public class AIController : MonoBehaviour
 
     void FindPlayerReference()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+
     }
 }
