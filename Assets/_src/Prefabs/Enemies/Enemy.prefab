@@ -48,7 +48,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 0
   m_Acceleration: 40
   avoidancePriority: 50
   m_AngularSpeed: 800
@@ -73,7 +73,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brain: {fileID: 11400000, guid: 843b763c7d9b44ad99eead66a5b00a47, type: 2}
+  playerTransform: {fileID: 0}
   GFXTransform: {fileID: 3333958443224021027}
+  referencesOk: 0
 --- !u!114 &1424700342065226900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eec954e6dfd334581a9323ed7fbf1bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!114 &4456428602406465819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e41f674a7ede74dd29cc56ce63e9d415, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brain: {fileID: 11400000, guid: 843b763c7d9b44ad99eead66a5b00a47, type: 2}
   canAttack: 0
   currentAttackCooldown: 0
-  player: {fileID: 0}
 --- !u!114 &5422279483766377465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 482f928d7d4fe49b1b1432da6e14b8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  States: 0
 --- !u!1 &7928181669574598185
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,9 +7,14 @@ public class AIMovement : MonoBehaviour
 {
     private NavMeshAgent nav;
 
-    void Start()
+    void Awake()
     {
         nav = GetComponent<NavMeshAgent>();
+    }
+
+    public void Init(EnemyScriptable brain)
+    {
+        nav.speed = brain.speed;
     }
 
     public bool Chase(Transform target)
