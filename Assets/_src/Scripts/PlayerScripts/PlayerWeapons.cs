@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class PlayerWeapons : MonoBehaviour
 {
-    public WeaponScriptable[] Weapons;
+    public List<WeaponScriptable> Weapons;
+
+    public WeaponScriptable[] AllWeapons;
+
     public LayerMask EnemiesLayer;
 
-    public void AddWeapon(WeaponScriptable weapon)
+    public void AddRandomWeapon()
     {
-
+        Weapons.Add(AllWeapons[Random.Range(0, AllWeapons.Length)]);
     }
 
     public void UpgradeWeapon(WeaponScriptable weapon)
@@ -29,7 +32,7 @@ public class PlayerWeapons : MonoBehaviour
 
     private void UseTargetWeapons()
     {
-        if (Weapons.Length <= 0) return; // se eu não tenho armas, retorna.
+        if (Weapons.Count <= 0) return; // se eu não tenho armas, retorna.
 
         foreach(WeaponScriptable weapon in Weapons)
         {
@@ -55,7 +58,7 @@ public class PlayerWeapons : MonoBehaviour
 
             var projectile = Instantiate(weapon.proj, transform.position, Quaternion.identity);
 
-            projectile.GetComponent<TargetProjectile>().Init(closestTarget.transform);
+            projectile.GetComponent<ITargetWeapon>().Init(closestTarget.transform);
              
         }
     }

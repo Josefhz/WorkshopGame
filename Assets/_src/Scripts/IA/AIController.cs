@@ -6,6 +6,7 @@ public class AIController : MonoBehaviour
 {
     [Header("Main Data")]
     [SerializeField] private EnemyScriptable brain;
+    [SerializeField] private GameObject XPPrefab;
 
     [Header("Player Reference")]
     [SerializeField] private Transform playerTransform;
@@ -17,6 +18,8 @@ public class AIController : MonoBehaviour
     private AIStates AIStatesScript;
     private AIMovement AIMovementScript;
     private AICombat AICombatScript;
+    private CharacterStatusManager AIStatusScript;
+    private DamageHandler AIDamageHandlerScript;
 
     [Header("References Check")]
     [SerializeField] private bool referencesOk;
@@ -29,14 +32,19 @@ public class AIController : MonoBehaviour
         AIStatesScript = GetComponent<AIStates>();
         AIMovementScript = GetComponent<AIMovement>();
         AICombatScript = GetComponent<AICombat>();
+        AIStatusScript = GetComponent<CharacterStatusManager>();
+        AIDamageHandlerScript = GetComponent<DamageHandler>();
 
         brain = pBrain;
 
         AICombatScript.Init(brain);
         AIMovementScript.Init(brain);
+        AIStatusScript.InitStatus(brain.Status);
 
         InstantiateGraphics();
         FindPlayerReference();
+
+        AIDamageHandlerScript.Init();
 
         referencesOk = true;
     }
@@ -82,7 +90,8 @@ public class AIController : MonoBehaviour
 
     void InstantiateGraphics()
     {
-        Instantiate(brain.GFX, GFXTransform);
+        var gfx = Instantiate(brain.GFX, GFXTransform);
+        gfx.transform.parent = this.transform;
     }
 
     void FindPlayerReference()
@@ -92,5 +101,10 @@ public class AIController : MonoBehaviour
         if (playerReference == null) return;
 
         playerTransform = playerReference.transform;
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(XPPrefab, transform.position, Quaternion.identity);
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1514fe2f939a04959ba56b5ed4ec5d14, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  Damage: 50
+  Range: 10
+  AttackSpeed: 0
+  CurrentCooldown: 0
+  projectileSpeed: 10
+  type: 2
+  proj: {fileID: 5797784024869272615, guid: bee6da8595f7344e191bc997b2db4b19, type: 3}

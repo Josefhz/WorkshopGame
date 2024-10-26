@@ -10,9 +10,11 @@ public class CharacterStatusManager : MonoBehaviour, IDamageable
 
     public event Action OnTakeDamage;
 
-    private void Start()
+    public void InitStatus(Status pStatus)
     {
-        status.Init();
+        status.Health = pStatus.Health;
+        status.Armor = pStatus.Armor;
+        status.MagicResist = pStatus.MagicResist;
     }
 
     public void TakeDamage(int amount)
@@ -22,6 +24,13 @@ public class CharacterStatusManager : MonoBehaviour, IDamageable
         status.Health -= amount;
 
         OnTakeDamage?.Invoke();
+
+        // EVENTO AO TOMAR DANO
+        // Saia sangue
+        // animacao de tomar dano
+        // boneco piscando
+        // numero do dano
+        // coisas relacionadas a tomar dano
 
         if (status.Health <= 0)
         {

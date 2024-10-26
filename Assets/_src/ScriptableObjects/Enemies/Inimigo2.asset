@@ -16,7 +16,7 @@ MonoBehaviour:
     Health: 200
     Armor: 20
     MagicResist: 20
-  speed: 0
+  speed: 5
   AttackRange: 2
   attackSpeed: 2
   AttackDamage: 050000000a000000

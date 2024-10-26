@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1514fe2f939a04959ba56b5ed4ec5d14, type: 3}
   m_Name: Pistola
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 100
   Range: 5
   AttackSpeed: 2
   CurrentCooldown: 2
