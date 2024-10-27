@@ -53,6 +53,6 @@ public class RoamingProjectile : Projectile, ITargetWeapon
 
     private void OnDestroy()
     {
-        Instantiate(explosion, transform);
+        Instantiate(explosion, transform.position, Quaternion.identity);
     }
 }
